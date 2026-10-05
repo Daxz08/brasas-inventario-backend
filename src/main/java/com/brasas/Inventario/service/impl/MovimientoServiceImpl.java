@@ -34,6 +34,7 @@ public class MovimientoServiceImpl implements MovimientoService {
     private final UsuarioRepository usuarioRepository;
 
     @Override
+    @Transactional(readOnly = true)
     public List<MovimientoResponse> listarTodos() {
         return movimientoRepository.findByEstadoOrderByFechaMovimientoDesc(
                         Movimiento.EstadoMovimiento.CONFIRMADO)
@@ -43,6 +44,7 @@ public class MovimientoServiceImpl implements MovimientoService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<MovimientoResponse> listarPorTipo(String tipo) {
         Movimiento.TipoMovimiento tipoEnum;
         try {
@@ -58,6 +60,7 @@ public class MovimientoServiceImpl implements MovimientoService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<MovimientoResponse> listarPorRangoFechas(LocalDate desde, LocalDate hasta) {
         LocalDateTime desdeDt = desde.atStartOfDay();
         LocalDateTime hastaDt = hasta.atTime(LocalTime.MAX);
@@ -69,6 +72,7 @@ public class MovimientoServiceImpl implements MovimientoService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public MovimientoResponse obtenerPorId(Integer id) {
         Movimiento m = movimientoRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Movimiento no encontrado con ID: " + id));
