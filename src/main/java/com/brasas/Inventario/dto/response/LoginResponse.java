@@ -17,4 +17,6 @@ public class LoginResponse {
     private String nombres;
     private String apellidos;
     private String rol;
+    private Boolean requiere2FA;
+    private String mensaje;
 }

@@ -6,7 +6,9 @@ import com.brasas.Inventario.dto.response.UsuarioResponse;
 
 public interface AuthService {
 
-    LoginResponse login(LoginRequest request);
+    LoginResponse iniciarLogin(LoginRequest request);
+
+    LoginResponse verificarCodigo(String nombreUsuario, String codigo);
 
     UsuarioResponse obtenerUsuarioActual(String username);
 }
