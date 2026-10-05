@@ -38,7 +38,7 @@ public class SecurityConfig {
                                 "/swagger-resources/**",
                                 "/webjars/**"
                         ).permitAll()
-                        .requestMatchers("/api/auth/login").permitAll()
+                        .requestMatchers("/api/auth/login","/api/auth/verificar-codigo").permitAll()
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session
